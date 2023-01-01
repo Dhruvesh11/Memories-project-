@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Input from "./Input";
 import { GoogleLogin } from "react-google-login";
-import  Icon from './icon';
-import {useNavigate} from 'react-router-dom';
-import {signin,signup} from '../../actions/auth';
+import Icon from "./icon";
+import { useNavigate } from "react-router-dom";
+import { signin, signup } from "../../actions/auth";
 import {
   Avatar,
   Button,
@@ -13,46 +13,53 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-const initialState= {firstName:'',lastName:'',email:'',password:'',confirmPassword:''}
-const Auth = () => {
-  const history= useNavigate();
-  const dispatch= useDispatch();
-  const [formData,setformData]=useState(initialState)
-  const [isSignup, setisSignup] = useState(false);
- const handleShowPassword = () =>
-    setshowPassword((preShowPassword) => !preShowPassword);
-  
-    const [showPassword, setshowPassword] = useState(false);
-  const handleSubmit = () => {
-    e.preventDefault();
-   if(isSignup){
-    dispatch(signup(formData,history));
-   }
-   else{
-    dispatch(signin(formData,history));
-   }
-  };
-  const handleChange=(e)=>{
-      setformData({...formData,[e.target.name]:e.target.value})
-  }
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
-  
-  switchMode = () => setisSignup((preisSignup) => !preisSignup);
-  setshowPassword(false);
-   const googleFailure=()=>{
-        console.log('Google Sign In was unsuccessful.Try Again Later');
-   }
-   const googleSuccess=async(res)=>{
-    const result= res?.profileObj;
-    const token=res?.tokenId;
-    try{
-      dispatch({type:'AUTH',data:{result,token}});
-      history.push('/')
-      
-    }catch(error){
-      console.log(error);
+const Auth = () => {
+  const history = useNavigate();
+  const dispatch = useDispatch();
+  const [formData, setformData] = useState(initialState);
+  const [isSignup, setisSignup] = useState(false);
+  const [showPassword, setshowPassword] = useState(false);
+
+  const handleShowPassword = () =>
+    setshowPassword((preShowPassword) => !preShowPassword);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isSignup) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
     }
-   }
+  };
+  const handleChange = (e) => {
+    setformData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  //   const switchMode = () => setisSignup((preisSignup) => !preisSignup);
+  //   setshowPassword(false);
+  //    const googleFailure=()=>{
+  //         console.log('Google Sign In was unsuccessful.Try Again Later');
+  //    }
+  //    const googleSuccess=async(res)=>{
+  //     const result= res?.profileObj;
+  //     const token=res?.tokenId;
+  //     try{
+  //       dispatch({type:'AUTH',data:{result,token}});
+  //       history.push('/')
+
+  //     }catch(error){
+  //       console.log(error);
+  //     }
+  //    }
   return (
     <Container components="main" maxWidth="xs">
       <Paper elevation={3}>
@@ -61,7 +68,7 @@ const Auth = () => {
         </Avatar>
         <Typography variant="h5">
           {isSignup ? "Sign Up" : "Sign In"}
-          <form onSubmit={handleCubmit}>
+          <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               {isSignup && (
                 <>
@@ -93,7 +100,7 @@ const Auth = () => {
                 type={showPassword ? "text" : "password"}
                 handleShowPassword={handleShowPassword}
               />
-              {isSignup && (
+              {/*  {isSignup && (
                 <Input
                   name="confirmPassword"
                   label="Repeat Password"
@@ -131,7 +138,7 @@ const Auth = () => {
                     ? "Already have an account?"
                     : "Don't have an account?Sign Up"}
                 </Button>
-              </Grid>
+              </Grid> */}
             </Grid>
           </form>
         </Typography>

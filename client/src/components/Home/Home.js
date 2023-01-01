@@ -7,11 +7,13 @@ import Form from '../Form/Form'
 const Home =()=>{
     const [currentId,setCurrentId]=useState(null);
     const dispatch=useDispatch();
-    const x=()=>{
-    useEffect(()=>{
-      dispatch(getPosts());
-    },[currentId,dispatch]);
-  }
+  //   useEffect(()=>{
+  //     dispatch(getPosts());
+  //   },[currentId,dispatch]);
+  // }
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [currentId, dispatch]);
     const user=null;
     return(
         <Grow in>

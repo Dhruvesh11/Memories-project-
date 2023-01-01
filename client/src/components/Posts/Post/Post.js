@@ -8,7 +8,7 @@ import moment from 'react-moment';
 import { deletePost ,likePost} from "../../../actions/posts";
  const Post=({post,setCurrentId})=>{
     const user=JSON.parse(localStorage.getItem('profile'));
-    const likes=()=>{
+    const Likes=()=>{
         if(post.likes.length>0){
             return post.likes.find((like)=>like===(user?.result?.googleId||user?.result?._id))?(
                 <>

@@ -9,14 +9,15 @@ const Navbar =()=>{
     const history=useNavigate();
     const dispatch=useDispatch();
     const location=useLocation();
-    const Logout=()=>{
+    const logout=()=>{
          dispatch({type:'LOGOUT'});
          history.push('/');
          setUser(null);
     }
     const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')))
+    console.log(user);
     const x=()=>{
-    React.useEffect=(()=>{
+    useEffect=(()=>{
         const token=user?.token;
         if(token){
             const decodedToken=decode(token);
@@ -44,7 +45,7 @@ const Navbar =()=>{
                     <div>
                         <Avatar alt={user.result.name} src={user.result.name.imageUrl}>{user.result.name.charAT(0)}</Avatar>
                         <Typography variant="h6">{user.result.name}</Typography>
-                        <Button variant="contained" color="secondary" onClick={Logout}>Logout</Button>
+                        <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
                     </div>
                 ):(
                        <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>

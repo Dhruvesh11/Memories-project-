@@ -14,9 +14,9 @@ API.interceptors.request.use((req) => {
     return Promise.reject(error);
 });
 export const fetchPosts=()=>API.get('/posts');
-export const createPost=(newpost)=>API.post('/posts',newpost)
-export const updatePost=(id,updatePost)=>API.post( `/posts/${id}`,updatePost)
-export const deletePost=(id)=>API.delete(`/posts/${id}`);
-export const likePost=(id)=>API.patch(`/posts/${id}/likePost`);
+export const createPost=(newpost)=>API.post('/posts/addPost',newpost)
+export const updatePost=(id,updatePost)=>API.post( `/posts/updatePost/${id}`,updatePost)
+export const deletePost=(id)=>API.delete(`/posts/deletePost/${id}`);
+export const likePost=(id)=>API.patch(`/posts/likePost/${id}/likePost`);
 export const signIn=(formData)=>API.post('/user/signin',formData);
 export const signUp=(formData)=>API.post('/user/signup',formData);

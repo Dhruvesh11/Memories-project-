@@ -7,13 +7,13 @@ import Auth from "./components/Auth/Auth";
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        {/* <Container maxWidth="lg">
-          <Navbar /> */}
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Auth />} />
-        {/* </Container> */}
-      </Routes>
+      <Container maxWidth="lg">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Auth />} />
+        </Routes>
+      </Container>
     </BrowserRouter>
   );
 };

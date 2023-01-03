@@ -14,7 +14,7 @@ const Navbar =()=>{
          history.push('/');
          setUser(null);
     }
-    const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')))
+    const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')) || null)
     console.log(user);
     const x=()=>{
     useEffect=(()=>{
@@ -43,8 +43,8 @@ const Navbar =()=>{
              {
                 user?(
                     <div>
-                        <Avatar alt={user.result.name} src={user.result.name.imageUrl}>{user.result.name.charAT(0)}</Avatar>
-                        <Typography variant="h6">{user.result.name}</Typography>
+                        <Avatar alt={user.name} src={user.imageUrl}>{user.name}</Avatar>
+                        <Typography variant="h6">{user.name}</Typography>
                         <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
                     </div>
                 ):(

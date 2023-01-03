@@ -2,7 +2,6 @@ import PostMessage from "../models/postMessage.js";
 import mongoose from "mongoose";
 export const getPosts = async (req, res) => {
   try {
-    console.log("hi");
     const postMessages = await PostMessage.find();
     console.log(postMessages);
     res.status(200).json(postMessages);
@@ -31,7 +30,6 @@ export const createPost = async (req, res) => {
 };
 export const updatePost = async (req, res) => {
   try {
-    console.log("hi");
     const { id: _id } = req.params;
     const post = req.body;
     if (!mongoose.Types.ObjectId.isValid(_id))

@@ -17,9 +17,16 @@ res.status(500).json({message:'Something went wrong.'});
 }
 }
 export const signup= async(req,res)=>{
+    console.log(req.body);
     const {email,password,firstName,lastName,confirmPassword}=req.body;
     try{
-        const existingUser = await User.find({email})
+        const existingUser =await User
+        .findOne
+        ({
+            where: {
+                email: email
+            }
+        });
         if(existingUser) return res.status(400).json({message:'User already exists'});
         if(password!==confirmPassword)
         if(password!==confirmPassword) return res.status(400).json({message:'Passwords doesnt match'});

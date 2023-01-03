@@ -43,8 +43,8 @@ const Navbar =()=>{
              {
                 user?(
                     <div>
-                        <Avatar alt={user.name} src={user.imageUrl}>{user.name}</Avatar>
-                        <Typography variant="h6">{user.name}</Typography>
+                        <Avatar alt={user.data.name} src={user.data.imageUrl}>{user.data.name}</Avatar>
+                        <Typography variant="h6">{user.data.name}</Typography>
                         <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
                     </div>
                 ):(

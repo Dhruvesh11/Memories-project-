@@ -44,22 +44,22 @@ const Auth = () => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  //   const switchMode = () => setisSignup((preisSignup) => !preisSignup);
-  //   setshowPassword(false);
-  //    const googleFailure=()=>{
-  //         console.log('Google Sign In was unsuccessful.Try Again Later');
-  //    }
-  //    const googleSuccess=async(res)=>{
-  //     const result= res?.profileObj;
-  //     const token=res?.tokenId;
-  //     try{
-  //       dispatch({type:'AUTH',data:{result,token}});
-  //       history.push('/')
+    const switchMode = () => setisSignup((preisSignup) => !preisSignup);
+    
+     const googleFailure=()=>{
+          console.log('Google Sign In was unsuccessful.Try Again Later');
+     }
+     const googleSuccess=async(res)=>{
+      const result= res?.profileObj;
+      const token=res?.tokenId;
+      try{
+        dispatch({type:'AUTH',data:{result,token}});
+        history('/')
+      }catch(error){
+        console.log(error);
+      }
+     }
 
-  //     }catch(error){
-  //       console.log(error);
-  //     }
-  //    }
   return (
     <Container components="main" maxWidth="xs">
       <Paper elevation={3}>
@@ -100,7 +100,7 @@ const Auth = () => {
                 type={showPassword ? "text" : "password"}
                 handleShowPassword={handleShowPassword}
               />
-              {/*  {isSignup && (
+               {isSignup && (
                 <Input
                   name="confirmPassword"
                   label="Repeat Password"
@@ -111,7 +111,7 @@ const Auth = () => {
             </Grid>
             <Button type="submit" fullWidth variant="contained" color="primary">
               {isSignup ? "Sign Up" : "Sign In"}
-            </Button>2
+            </Button>
             <GoogleLogin
               clientId="755318207688-rnbspve8bkhntgtpgh2lr8vo85e86ri8.apps.googleusercontent.com"
               render={(renderProps) => {
@@ -138,7 +138,7 @@ const Auth = () => {
                     ? "Already have an account?"
                     : "Don't have an account?Sign Up"}
                 </Button>
-              </Grid> */}
+              </Grid>
             </Grid>
           </form>
         </Typography>

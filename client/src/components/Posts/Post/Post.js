@@ -6,7 +6,8 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useDispatch } from "react-redux";
 import moment from 'react-moment';
 import { deletePost ,likePost} from "../../../actions/posts";
- const Post=({post,setCurrentId})=>{
+ const Post=(props)=>{
+    const {post, setCurrentId}=props;
     const user=JSON.parse(localStorage.getItem('profile'));
     const Likes=()=>{
         if(post.likes.length>0){
